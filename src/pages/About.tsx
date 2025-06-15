@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Youtube, Mail, BookOpen } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
@@ -10,8 +9,7 @@ const About = () => {
       <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <SaiBabaIcon size={28} className="text-orange-600" />
+            <div className="flex items-center">
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
