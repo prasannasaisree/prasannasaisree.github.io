@@ -1,8 +1,39 @@
-
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { BookOpen, Youtube, Heart, Star } from "lucide-react";
 
 const Index = () => {
+  // Save scroll position before navigating away
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    };
+
+    // Save scroll position when user scrolls
+    const handleScroll = () => {
+      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    // Restore scroll position when coming back to home page
+    const savedPosition = sessionStorage.getItem('homeScrollPosition');
+    if (savedPosition) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: parseInt(savedPosition),
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeunload', saveScrollPosition);
+    };
+  }, []);
+
   const collections = [
     {
       id: "malayalam-devotion",
@@ -38,6 +69,11 @@ const Index = () => {
     { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "sacred-path" },
     { title: "Journey Within", language: "English", collection: "english-reflections", type: "text", id: "journey-within" }
   ];
+
+  // Handle link clicks to save scroll position
+  const handlePoemClick = () => {
+    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
@@ -104,6 +140,7 @@ const Index = () => {
                       <Link 
                         key={index}
                         to={`/collection/${collection.id}#${poem.id}`}
+                        onClick={handlePoemClick}
                         className="block text-orange-600 hover:text-orange-800 transition-colors flex items-center space-x-1"
                       >
                         <span>•</span>
@@ -114,6 +151,7 @@ const Index = () => {
                   </div>
                   <Link 
                     to={`/collection/${collection.id}`}
+                    onClick={handlePoemClick}
                     className="inline-block mt-4 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
                   >
                     View Collection
@@ -134,6 +172,7 @@ const Index = () => {
               <Link 
                 key={index}
                 to={`/collection/${poem.collection}#${poem.id}`}
+                onClick={handlePoemClick}
                 className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group"
               >
                 <h4 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">
