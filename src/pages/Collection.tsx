@@ -145,7 +145,7 @@ const Collection = () => {
           let twitterImage = document.querySelector('meta[name="twitter:image"]');
           if (!twitterImage) {
             twitterImage = document.createElement('meta');
-            twitterImage.setAttribute('name', 'twitter:image');
+            twitterImage.setAttribute('property', 'twitter:image');
             document.head.appendChild(twitterImage);
           }
           twitterImage.setAttribute('content', imageUrl);
@@ -564,31 +564,30 @@ No more need I ever roam.`
                 {poem.type === "text" ? (
                   // Text Poem
                   <div className="p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
-                      <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 flex-1">
-                        {poem.title}
-                      </h3>
-                      <div className="flex items-center justify-center sm:justify-end space-x-3">
-                        {poem.translationLink && (
-                          <Link 
-                            to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
-                            className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg border border-orange-200"
-                          >
-                            <Languages size={16} />
-                            <span className="text-sm">{poem.translationLink.title}</span>
-                          </Link>
-                        )}
-                        <WhatsAppShare 
-                          poemTitle={poem.title}
-                          collectionId={id!}
-                          poemId={poem.id}
-                        />
-                      </div>
-                    </div>
-                    <div className="prose prose-lg max-w-none">
+                    <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 mb-6">
+                      {poem.title}
+                    </h3>
+                    <div className="prose prose-lg max-w-none mb-8">
                       <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
                         {poem.content}
                       </pre>
+                    </div>
+                    {/* Translation and Share Links at Bottom */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-4 pt-6 border-t border-gray-100">
+                      {poem.translationLink && (
+                        <Link 
+                          to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
+                          className="flex items-center justify-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg border border-orange-200"
+                        >
+                          <Languages size={16} />
+                          <span className="text-sm font-medium">{poem.translationLink.title}</span>
+                        </Link>
+                      )}
+                      <WhatsAppShare 
+                        poemTitle={poem.title}
+                        collectionId={id!}
+                        poemId={poem.id}
+                      />
                     </div>
                   </div>
                 ) : (
@@ -603,31 +602,33 @@ No more need I ever roam.`
                       </div>
                     </div>
                     <div className="p-8">
-                      <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-4">
-                        <h3 className="text-2xl font-bold text-gray-800">{poem.title}</h3>
-                        <div className="flex items-center justify-center sm:justify-end space-x-3">
-                          {poem.translationLink && (
-                            <Link 
-                              to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
-                              className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg border border-orange-200"
-                            >
-                              <Languages size={16} />
-                              <span className="text-sm">{poem.translationLink.title}</span>
-                            </Link>
-                          )}
-                          <div className="flex items-center space-x-1 text-red-600 bg-red-50 px-3 py-2 rounded-lg border border-red-200">
-                            <Youtube size={16} />
-                            <span className="text-sm">Video</span>
-                          </div>
-                          <WhatsAppShare 
-                            poemTitle={poem.title}
-                            collectionId={id!}
-                            poemId={poem.id}
-                          />
+                      <h3 className="text-2xl font-bold text-gray-800 mb-4">{poem.title}</h3>
+                      <div className="flex items-center space-x-2 mb-4">
+                        <div className="flex items-center space-x-1 text-red-600 bg-red-50 px-3 py-2 rounded-lg border border-red-200">
+                          <Youtube size={16} />
+                          <span className="text-sm font-medium">Video</span>
                         </div>
                       </div>
                       <p className="text-gray-600 mb-4">{poem.description}</p>
-                      <p className="text-sm text-gray-500 italic">{poem.videoDescription}</p>
+                      <p className="text-sm text-gray-500 italic mb-6">{poem.videoDescription}</p>
+                      
+                      {/* Translation and Share Links at Bottom */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-4 pt-6 border-t border-gray-100">
+                        {poem.translationLink && (
+                          <Link 
+                            to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
+                            className="flex items-center justify-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg border border-orange-200"
+                          >
+                            <Languages size={16} />
+                            <span className="text-sm font-medium">{poem.translationLink.title}</span>
+                          </Link>
+                        )}
+                        <WhatsAppShare 
+                          poemTitle={poem.title}
+                          collectionId={id!}
+                          poemId={poem.id}
+                        />
+                      </div>
                     </div>
                   </>
                 )}
