@@ -1,7 +1,6 @@
-
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Heart, Youtube, ArrowLeft, BookOpen, Play } from "lucide-react";
+import { Heart, Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
 
 const Collection = () => {
   const { id } = useParams();
@@ -50,6 +49,25 @@ const Collection = () => {
 ശാന്തിയുടെ നദി ഒഴുകുന്നു
 സേവയിലൂടെ, ഭക്തിയിലൂടെ
 ദൈവത്തോട് അടുക്കുന്നു`
+        },
+        {
+          id: "mothers-love-malayalam",
+          title: "അമ്മയുടെ സ്നേഹം (Mother's Love)",
+          type: "text",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "mothers-love-english",
+            title: "Mother's Love (English)"
+          },
+          content: `സായി മാതാവിന്റെ സ്നേഹം
+എന്റെ ഹൃദയത്തിൽ നിറയുന്നു
+അമ്മയുടെ കരുണാമയമായ കൈകൾ
+എന്റെ വേദനകൾ തുടച്ചുമാറ്റുന്നു
+
+നിന്റെ മടിയിൽ ഞാൻ കുട്ടിയാകുന്നു
+എല്ലാ ഭാരങ്ങളും മറന്നുപോകുന്നു
+അമ്മേ സായി, എന്റെ രക്షകയേ
+നിന്റെ സ്നേഹത്തിൽ ഞാൻ മുങ്ങുന്നു`
         },
         {
           id: "sais-glory",
@@ -102,6 +120,30 @@ Service to others, love for all,
 Compassion flowing like a stream,
 Answer to the inner call,
 Living the divine dream.`
+        },
+        {
+          id: "mothers-love-english",
+          title: "Mother's Love",
+          type: "text",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "mothers-love-malayalam",
+            title: "അമ്മയുടെ സ്നേഹം (Malayalam)"
+          },
+          content: `Sai Mother's love flows through my heart,
+Like rivers flowing to the sea,
+Her gentle hands heal every part,
+Of pain and sorrow within me.
+
+In her lap I find my rest,
+Like a child so pure and free,
+Mother Sai, you are the best,
+Your love is all I'll ever need.
+
+When storms of life come rushing in,
+Your embrace keeps me so warm,
+Divine Mother, through thick and thin,
+You shelter me from every storm.`
         },
         {
           id: "love-and-light",
@@ -180,9 +222,20 @@ Living the divine dream.`
                 {poem.type === "text" ? (
                   // Text Poem
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center border-b border-gray-200 pb-4">
-                      {poem.title}
-                    </h3>
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 flex-1">
+                        {poem.title}
+                      </h3>
+                      {poem.translationLink && (
+                        <Link 
+                          to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
+                          className="ml-4 flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg"
+                        >
+                          <Languages size={16} />
+                          <span className="text-sm">{poem.translationLink.title}</span>
+                        </Link>
+                      )}
+                    </div>
                     <div className="prose prose-lg max-w-none">
                       <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
                         {poem.content}

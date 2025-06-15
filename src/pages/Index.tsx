@@ -11,6 +11,7 @@ const Index = () => {
       poems: [
         { title: "Divine Light", id: "divine-light" },
         { title: "Sacred Path", id: "sacred-path" },
+        { title: "Mother's Love (Malayalam)", id: "mothers-love-malayalam" },
         { title: "Sai's Glory (Video)", id: "sais-glory" }
       ]
     },
@@ -21,12 +22,15 @@ const Index = () => {
       poems: [
         { title: "Eternal Grace", id: "eternal-grace" },
         { title: "Journey Within", id: "journey-within" },
+        { title: "Mother's Love", id: "mothers-love-english" },
         { title: "Love and Light (Video)", id: "love-and-light" }
       ]
     }
   ];
 
   const recentPoems = [
+    { title: "അമ്മയുടെ സ്നേഹം (Mother's Love)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "mothers-love-malayalam" },
+    { title: "Mother's Love", language: "English", collection: "english-reflections", type: "text", id: "mothers-love-english" },
     { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "divine-light" },
     { title: "Eternal Grace", language: "English", collection: "english-reflections", type: "text", id: "eternal-grace" },
     { title: "സായി മഹിമ (Sai's Glory)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "sais-glory" },
