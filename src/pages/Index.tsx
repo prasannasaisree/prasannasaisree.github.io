@@ -1,6 +1,7 @@
+
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { BookOpen, Youtube, Flame } from "lucide-react";
+import { BookOpen, Youtube } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const Index = () => {
@@ -115,10 +116,12 @@ const Index = () => {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Spiritual poetry and devotional songs inspired by the teachings of Bhagavan Sri Sathya Sai Baba
           </p>
-          <div className="flex justify-center space-x-4">
-            <Flame className="text-orange-500" size={24} />
-            <Flame className="text-orange-500" size={24} />
-            <Flame className="text-orange-500" size={24} />
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=200&h=200&fit=crop" 
+              alt="Sathya Sai Baba - Spiritual Guide and Inspiration" 
+              className="w-32 h-32 object-cover rounded-full shadow-lg border-4 border-orange-200"
+            />
           </div>
         </div>
       </section>

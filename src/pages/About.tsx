@@ -1,5 +1,6 @@
+
 import { Link } from "react-router-dom";
-import { Youtube, Mail, BookOpen, Flame } from "lucide-react";
+import { Youtube, Mail, BookOpen } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const About = () => {
@@ -38,11 +39,6 @@ const About = () => {
               />
             </div>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">About Prasanna Saisree</h2>
-            <div className="flex justify-center space-x-2 mb-6">
-              <Flame className="text-orange-500" size={20} />
-              <Flame className="text-orange-500" size={20} />
-              <Flame className="text-orange-500" size={20} />
-            </div>
           </div>
 
           {/* Author Description */}

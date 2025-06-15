@@ -3,6 +3,7 @@ import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
+import WhatsAppShare from "../components/WhatsAppShare";
 
 const Collection = () => {
   const { id } = useParams();
@@ -18,7 +19,52 @@ const Collection = () => {
         }, 100);
       }
     }
-  }, [location.hash, location.pathname]); // React to both hash and pathname changes
+  }, [location.hash, location.pathname]);
+
+  // Set document meta tags for social sharing
+  useEffect(() => {
+    const updateMetaTags = () => {
+      const poemId = location.hash.substring(1);
+      const collection = collections[id as keyof typeof collections];
+      
+      if (collection && poemId) {
+        const poem = collection.poems.find(p => p.id === poemId);
+        if (poem) {
+          // Update page title
+          document.title = `${poem.title} - ${collection.title}`;
+          
+          // Update meta description
+          let metaDescription = document.querySelector('meta[name="description"]');
+          if (metaDescription) {
+            metaDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem by Prasanna Saisree inspired by Sathya Sai Baba's teachings`);
+          }
+          
+          // Update Open Graph tags
+          let ogTitle = document.querySelector('meta[property="og:title"]');
+          if (ogTitle) {
+            ogTitle.setAttribute('content', `${poem.title} - Prasanna Saisree`);
+          }
+          
+          let ogDescription = document.querySelector('meta[property="og:description"]');
+          if (ogDescription) {
+            ogDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem inspired by Sathya Sai Baba's teachings`);
+          }
+          
+          // Use different images based on language/collection
+          const imageUrl = id === 'malayalam-devotion' 
+            ? 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&h=630&fit=crop'
+            : 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1200&h=630&fit=crop';
+          
+          let ogImage = document.querySelector('meta[property="og:image"]');
+          if (ogImage) {
+            ogImage.setAttribute('content', imageUrl);
+          }
+        }
+      }
+    };
+
+    updateMetaTags();
+  }, [location.hash, id]);
 
   const collections = {
     "malayalam-devotion": {
@@ -229,15 +275,22 @@ You shelter me from every storm.`
                       <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 flex-1">
                         {poem.title}
                       </h3>
-                      {poem.translationLink && (
-                        <Link 
-                          to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
-                          className="ml-4 flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg"
-                        >
-                          <Languages size={16} />
-                          <span className="text-sm">{poem.translationLink.title}</span>
-                        </Link>
-                      )}
+                      <div className="ml-4 flex items-center space-x-2">
+                        {poem.translationLink && (
+                          <Link 
+                            to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
+                            className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg"
+                          >
+                            <Languages size={16} />
+                            <span className="text-sm">{poem.translationLink.title}</span>
+                          </Link>
+                        )}
+                        <WhatsAppShare 
+                          poemTitle={poem.title}
+                          collectionId={id!}
+                          poemId={poem.id}
+                        />
+                      </div>
                     </div>
                     <div className="prose prose-lg max-w-none">
                       <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
@@ -259,9 +312,16 @@ You shelter me from every storm.`
                     <div className="p-8">
                       <div className="flex items-start justify-between mb-4">
                         <h3 className="text-2xl font-bold text-gray-800">{poem.title}</h3>
-                        <div className="flex items-center space-x-1 text-red-600">
-                          <Youtube size={20} />
-                          <span className="text-sm">Video</span>
+                        <div className="flex items-center space-x-2">
+                          <div className="flex items-center space-x-1 text-red-600">
+                            <Youtube size={20} />
+                            <span className="text-sm">Video</span>
+                          </div>
+                          <WhatsAppShare 
+                            poemTitle={poem.title}
+                            collectionId={id!}
+                            poemId={poem.id}
+                          />
                         </div>
                       </div>
                       <p className="text-gray-600 mb-4">{poem.description}</p>
