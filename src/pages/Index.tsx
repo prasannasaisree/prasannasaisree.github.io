@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { BookOpen, Youtube } from "lucide-react";
@@ -65,18 +63,57 @@ const Index = () => {
         { title: "Eternal Bliss (Video)", id: "eternal-bliss-english" },
         { title: "Love and Light (Video)", id: "love-and-light" }
       ]
+    },
+    {
+      id: "prayers-chants",
+      title: "Prayers & Sacred Chants",
+      description: "Traditional prayers and chants for daily spiritual practice",
+      poems: [
+        { title: "Morning Prayer", id: "morning-prayer" },
+        { title: "Evening Devotion", id: "evening-devotion" },
+        { title: "Gayatri Mantra (Video)", id: "gayatri-mantra" },
+        { title: "Sai Ashtakam", id: "sai-ashtakam" },
+        { title: "Om Sai Ram Chant (Video)", id: "om-sai-ram-chant" },
+        { title: "Divine Names", id: "divine-names" }
+      ]
+    },
+    {
+      id: "wisdom-teachings",
+      title: "Wisdom & Teachings",
+      description: "Poetic reflections on Sai Baba's timeless teachings and life lessons",
+      poems: [
+        { title: "The Path of Truth", id: "path-of-truth" },
+        { title: "Service & Love", id: "service-love" },
+        { title: "Unity in Diversity (Video)", id: "unity-diversity" },
+        { title: "Forgiveness", id: "forgiveness" },
+        { title: "Selfless Action", id: "selfless-action" },
+        { title: "Divine Purpose (Video)", id: "divine-purpose" }
+      ]
+    },
+    {
+      id: "festival-celebrations",
+      title: "Festival & Celebration Poems",
+      description: "Joyous verses for religious festivals and special occasions",
+      poems: [
+        { title: "Guru Purnima", id: "guru-purnima" },
+        { title: "Diwali Lights (Video)", id: "diwali-lights" },
+        { title: "Christmas Love", id: "christmas-love" },
+        { title: "New Year Blessings", id: "new-year-blessings" },
+        { title: "Mahashivaratri (Video)", id: "mahashivaratri" },
+        { title: "Celebration of Unity", id: "celebration-unity" }
+      ]
     }
   ];
 
   const recentPoems = [
     { title: "അമ്മയുടെ സ്നേഹം (Mother's Love)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "mothers-love-malayalam" },
     { title: "Mother's Love", language: "English", collection: "english-reflections", type: "text", id: "mothers-love-english" },
-    { title: "ദിവ്യ കരുണ (Divine Compassion)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "divine-compassion-malayalam" },
+    { title: "Morning Prayer", language: "English", collection: "prayers-chants", type: "text", id: "morning-prayer" },
+    { title: "The Path of Truth", language: "English", collection: "wisdom-teachings", type: "text", id: "path-of-truth" },
+    { title: "Guru Purnima", language: "English", collection: "festival-celebrations", type: "text", id: "guru-purnima" },
     { title: "Divine Compassion", language: "English", collection: "english-reflections", type: "video", id: "divine-compassion-english" },
-    { title: "അന്തഃശാന്തി (Inner Peace)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "inner-peace-malayalam" },
-    { title: "Inner Peace", language: "English", collection: "english-reflections", type: "text", id: "inner-peace-english" },
-    { title: "നിത്യാനന്ദം (Eternal Bliss)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "eternal-bliss-malayalam" },
-    { title: "Eternal Bliss", language: "English", collection: "english-reflections", type: "video", id: "eternal-bliss-english" }
+    { title: "Gayatri Mantra", language: "Sanskrit", collection: "prayers-chants", type: "video", id: "gayatri-mantra" },
+    { title: "Unity in Diversity", language: "English", collection: "wisdom-teachings", type: "video", id: "unity-diversity" }
   ];
 
   // Handle link clicks to save scroll position
@@ -142,7 +179,7 @@ const Index = () => {
       <section className="py-12 px-6">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">Poetry Collections</h3>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((collection) => (
               <div key={collection.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="p-6">
@@ -227,4 +264,3 @@ const Index = () => {
 };
 
 export default Index;
-

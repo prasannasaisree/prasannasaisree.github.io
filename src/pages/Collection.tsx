@@ -195,7 +195,7 @@ const Collection = () => {
           content: `സത്യത്തിന്റെ പാതയിൽ നടക്കുമ്പോൾ
 സായിയുടെ കാരുണ്യം കാവലാകുന്നു
 അഹിംസയുടെ പൂക്കൾ വിരിയുന്നു
-പ്രേമത്തിന്റെ സുഗന്ധം പരക്കുന്നു
+പ്രേമത്തിന്റെ സൂഗന്ധം പരക്കുന്നു
 
 ധർമ്മത്തിന്റെ വെളിച്ചത്തിൽ
 ശാന്തിയുടെ നദി ഒഴുകുന്നു
@@ -494,6 +494,351 @@ No more need I ever roam.`
             poemId: "unity-malayalam",
             title: "ഐക്യം (Malayalam Video)"
           }
+        }
+      ]
+    },
+    "prayers-chants": {
+      title: "Prayers & Sacred Chants",
+      description: "Traditional prayers and chants for daily spiritual practice",
+      poems: [
+        {
+          id: "morning-prayer",
+          title: "Morning Prayer",
+          type: "text",
+          content: `As dawn breaks with golden light,
+I bow before your sacred sight,
+Sai Baba, guide my steps today,
+In love and service, let me stay.
+
+Bless this morning with your grace,
+Let your peace fill every space,
+In my heart, your name I keep,
+Awake or in my gentle sleep.
+
+Om Sai Ram, Om Sai Ram,
+You are my shelter, you are my calm,
+Grant me wisdom, grant me strength,
+To walk with you at any length.`
+        },
+        {
+          id: "evening-devotion",
+          title: "Evening Devotion",
+          type: "text",
+          content: `As evening shadows softly fall,
+I offer gratitude for all,
+The blessings of this passing day,
+Your loving presence lights my way.
+
+Forgive my errors, calm my mind,
+Leave worldly worries far behind,
+In quiet prayer, I seek your face,
+Surrounded by your boundless grace.
+
+Let peaceful sleep restore my soul,
+Make broken spirits pure and whole,
+Tomorrow bring new hope and light,
+Blessed Sai, guard me through the night.`
+        },
+        {
+          id: "gayatri-mantra",
+          title: "Gayatri Mantra - Video Chant",
+          type: "video",
+          description: "Sacred Sanskrit chant for spiritual illumination and divine wisdom",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "A meditative video presentation of the Gayatri Mantra with beautiful imagery and traditional pronunciation."
+        },
+        {
+          id: "sai-ashtakam",
+          title: "Sai Ashtakam",
+          type: "text",
+          content: `Sukhakarta Dukhaharta, Varta Vighnachi,
+Nurvikar Nirupadhi, Sarva Karanachi,
+Sadguru Sainatha, Maharaj ki Jai!
+
+Dnyanaswaroopa Samadhan, Sukh Peace,
+Kaliyugavatara, Saguna, Parabramha,
+Sadguru Sainatha, Maharaj ki Jai!
+
+Bhaktavarsha Bhavya, Bhagyodayakara,
+Uttamavara Stotra, Vaibhava Prakara,
+Sadguru Sainatha, Maharaj ki Jai!
+
+Ashta Gunavanta, Nirupama Gunakara,
+Apurvaisvaryasampanna, Sarva Manojña,
+Sadguru Sainatha, Maharaj ki Jai!`
+        },
+        {
+          id: "om-sai-ram-chant",
+          title: "Om Sai Ram Chant - Video",
+          type: "video",
+          description: "Rhythmic chanting of the sacred name Om Sai Ram",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "A peaceful chanting session with the divine name, perfect for meditation and devotional practice."
+        },
+        {
+          id: "divine-names",
+          title: "Divine Names",
+          type: "text",
+          content: `Sai Ram, Sai Ram, sacred name divine,
+In every breath, your presence shine,
+Sai Nath, Sai Nath, protector true,
+My heart and soul belong to you.
+
+Parthi Sai, beloved guide,
+Forever by my faithful side,
+Prema Sai, love incarnate pure,
+In your grace, I am secure.
+
+Bhagavan, the Lord most high,
+Lift my spirit to the sky,
+Avatar of this blessed age,
+Turn my life's every page.
+
+Om Sai Ram, Om Sai Ram,
+You are my peace, you are my balm,
+In every name, your glory rings,
+The joy that true devotion brings.`
+        }
+      ]
+    },
+    "wisdom-teachings": {
+      title: "Wisdom & Teachings",
+      description: "Poetic reflections on Sai Baba's timeless teachings and life lessons",
+      poems: [
+        {
+          id: "path-of-truth",
+          title: "The Path of Truth",
+          type: "text",
+          content: `Truth is the lamp that lights the way,
+Through darkness of the night and day,
+Sai teaches us to speak what's right,
+To live in truth's eternal light.
+
+No falsehood can the soul uplift,
+Truth alone is the divine gift,
+In honest words and righteous deed,
+Truth plants the spirit's sacred seed.
+
+When tempted by deceit's sweet call,
+Remember truth conquers all,
+For Sai Baba shows the way,
+Truth shall dawn like breaking day.
+
+Walk the path that leads to God,
+Where truthful saints and sages trod,
+In truth find peace, in truth find rest,
+Truth makes the human spirit blessed.`
+        },
+        {
+          id: "service-love",
+          title: "Service & Love",
+          type: "text",
+          content: `Service to others is service to God,
+This truth Sai Baba has long bestowed,
+In helping hands and caring heart,
+Divine love plays its sacred part.
+
+Love all beings, serve all life,
+Cut through ego like a knife,
+In every face, see God's own form,
+Let compassion keep you warm.
+
+Feed the hungry, heal the sick,
+Comfort those whose hearts are thick,
+With sorrow's weight and pain's dark cloud,
+Service makes God's presence loud.
+
+For in the act of selfless giving,
+We find the secret of true living,
+Sai's teaching, pure and bright:
+Love and serve with all your might.`
+        },
+        {
+          id: "unity-diversity",
+          title: "Unity in Diversity - Video Poem",
+          type: "video",
+          description: "A powerful message about seeing oneness in all of creation",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This inspiring video explores Sai Baba's teachings on unity, featuring diverse imagery celebrating the oneness of humanity."
+        },
+        {
+          id: "forgiveness",
+          title: "Forgiveness",
+          type: "text",
+          content: `Forgive and you shall be forgiven,
+This lesson from heaven is given,
+Let go of anger, pain, and spite,
+Embrace forgiveness, pure and bright.
+
+When others hurt with word or deed,
+Remember mercy's holy creed,
+For holding grudges binds the soul,
+Forgiveness makes the spirit whole.
+
+Sai teaches us to understand,
+That love should guide our heart and hand,
+In pardoning those who do us wrong,
+We sing divinity's own song.
+
+Release the past, embrace the new,
+Let forgiveness carry you,
+To heights of peace you've never known,
+Where love has fully grown.`
+        },
+        {
+          id: "selfless-action",
+          title: "Selfless Action",
+          type: "text",
+          content: `Work without the fruits in mind,
+This wisdom Sai helps us find,
+Do your duty, play your part,
+With sincere and loving heart.
+
+Attachment binds us to the wheel,
+Of suffering that we daily feel,
+But selfless action sets us free,
+From ego's false identity.
+
+Like a flower gives its scent,
+Without thought of what is spent,
+Offer all your works to God,
+Follow where the masters trod.
+
+In selfless service find your joy,
+Let nothing divine love destroy,
+For action done with pure intent,
+Brings peace that heaven has sent.`
+        },
+        {
+          id: "divine-purpose",
+          title: "Divine Purpose - Video Poem",
+          type: "video",
+          description: "Contemplation on finding one's spiritual purpose in life",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "A reflective video poem about discovering and fulfilling one's divine purpose through Sai Baba's guidance."
+        }
+      ]
+    },
+    "festival-celebrations": {
+      title: "Festival & Celebration Poems",
+      description: "Joyous verses for religious festivals and special occasions",
+      poems: [
+        {
+          id: "guru-purnima",
+          title: "Guru Purnima",
+          type: "text",
+          content: `On this sacred Guru Purnima day,
+To our beloved master we pray,
+Sai Baba, you are the light divine,
+Forever grateful that you are mine.
+
+Guru is the one who leads from dark,
+To light where truth leaves its mark,
+You showed us the path to the divine,
+In your love, our souls align.
+
+Moon is full on this blessed night,
+Just as our hearts with pure delight,
+Bow down to you, our sacred guide,
+With you, we shall always abide.
+
+Guru Brahma, Guru Vishnu too,
+Guru Maheshwara, all are you,
+On this day of celebration,
+Grant us your divine salvation.`
+        },
+        {
+          id: "diwali-lights",
+          title: "Diwali Lights - Video Poem",
+          type: "video",
+          description: "Celebration of the festival of lights with spiritual meaning",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "A festive video poem celebrating Diwali, showing the triumph of light over darkness in beautiful visual poetry."
+        },
+        {
+          id: "christmas-love",
+          title: "Christmas Love",
+          type: "text",
+          content: `At Christmas time, love fills the air,
+Sai's message resonates everywhere,
+Love all beings, serve with care,
+His teaching is beyond compare.
+
+Like the star that shone so bright,
+Guiding wise men through the night,
+Sai's love lights up our way,
+On this blessed Christmas day.
+
+Give and share with open heart,
+Let compassion play its part,
+In the spirit of the season,
+Love is life's most sacred reason.
+
+Christ and Sai both taught the same,
+Love is more than just a name,
+It's the essence of our being,
+Beyond all earthly seeing.`
+        },
+        {
+          id: "new-year-blessings",
+          title: "New Year Blessings",
+          type: "text",
+          content: `As the old year fades away,
+New hopes dawn with this new day,
+Sai Baba, bless this fresh start,
+Guide my mind and heal my heart.
+
+Let the past mistakes be gone,
+With forgiveness, carry on,
+Grant me wisdom, grant me peace,
+Let all suffering find release.
+
+In this year that lies ahead,
+Let love and truth be widespread,
+May I serve with greater zeal,
+Let your presence in me heal.
+
+New Year brings new chances bright,
+To walk further in your light,
+Bless all beings, great and small,
+With your love that conquers all.`
+        },
+        {
+          id: "mahashivaratri",
+          title: "Mahashivaratri - Video Poem",
+          type: "video",
+          description: "Sacred celebration of Lord Shiva and spiritual awakening",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "A devotional video poem for Mahashivaratri, exploring themes of destruction of ego and spiritual transformation."
+        },
+        {
+          id: "celebration-unity",
+          title: "Celebration of Unity",
+          type: "text",
+          content: `All festivals speak the same truth,
+From childhood to advanced youth,
+That love and light shall always win,
+Over darkness and over sin.
+
+Hindu, Muslim, Christian, Sikh,
+All are one, the truth we seek,
+Sai teaches us to celebrate,
+Unity before it's too late.
+
+Every prayer to God above,
+Carries the same message of love,
+Every ritual, every song,
+Reminds us where we all belong.
+
+In the garden of the divine,
+Different flowers intertwine,
+Each unique in its own way,
+Yet together, they pray.
+
+Celebrate our differences,
+While cherishing our common senses,
+For in unity we find our strength,
+To go to any faithful length.`
         }
       ]
     }
