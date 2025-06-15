@@ -1,0 +1,172 @@
+
+import { useParams, Link } from "react-router-dom";
+import { Heart, Youtube, ArrowLeft, BookOpen } from "lucide-react";
+
+const Collection = () => {
+  const { id } = useParams();
+
+  const collections = {
+    "malayalam-devotion": {
+      title: "മലയാളം ഭക്തി കവിതകൾ (Malayalam Devotional Poems)",
+      description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
+      poems: [
+        {
+          title: "ദിവ്യ ജ്യോതി (Divine Light)",
+          content: `സായി ബാബായുടെ ദിവ്യ കിരണങ്ങൾ
+എന്റെ ഹൃദയത്തിൽ പ്രകാശിക്കുന്നു
+ഇരുട്ടിന്റെ മേഘങ്ങൾ അകന്നുപോകുന്നു
+പ്രേമത്തിന്റെ സൂര്യൻ ഉദിക്കുന്നു
+
+ഓം സായി രാം, ഓം സായി രാം
+എന്റെ പ്രാണനാഥാ, എന്റെ ഗുരുവേ
+നിന്റെ അനുഗ്രഹം എപ്പോഴും എന്നോടൊപ്പം
+എന്റെ ജീവിതയാത്രയിൽ വെളിച്ചമാകട്ടെ`
+        },
+        {
+          title: "പവിത്ര മാർഗ്ഗം (Sacred Path)",
+          content: `സത്യത്തിന്റെ പാതയിൽ നടക്കുമ്പോൾ
+സായിയുടെ കാരുണ്യം കാവലാകുന്നു
+അഹിംസയുടെ പൂക്കൾ വിരിയുന്നു
+പ്രേമത്തിന്റെ സുഗന്ധം പരക്കുന്നു
+
+ധർമ്മത്തിന്റെ വെളിച്ചത്തിൽ
+ശാന്തിയുടെ നദി ഒഴുകുന്നു
+സേവയിലൂടെ, ഭക്തിയിലൂടെ
+ദൈവത്തോട് അടുക്കുന്നു`
+        }
+      ]
+    },
+    "english-reflections": {
+      title: "English Spiritual Reflections",
+      description: "Contemplative verses on divine love and spiritual awakening",
+      poems: [
+        {
+          title: "Eternal Grace",
+          content: `In the silence of the morning prayer,
+Your grace descends like gentle rain,
+Washing away all worldly care,
+Healing the heart of every pain.
+
+Sai Baba, your love divine,
+Flows through every breath I take,
+In your light, my soul does shine,
+For love alone, my heart awake.
+
+Truth and peace, your gifts so pure,
+Guide me on this sacred way,
+In your presence, I am sure,
+Love will bloom in every day.`
+        },
+        {
+          title: "Journey Within",
+          content: `Beyond the veil of mind and thought,
+Lies the treasure that we seek,
+Not in worldly things we've bought,
+But in the love that makes us meek.
+
+Sai teaches us to look inside,
+Where the divine presence dwells,
+No need to search far and wide,
+The truth within our own heart tells.
+
+Service to others, love for all,
+Compassion flowing like a stream,
+Answer to the inner call,
+Living the divine dream.`
+        }
+      ]
+    }
+  };
+
+  const collection = collections[id as keyof typeof collections];
+
+  if (!collection) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Collection not found</h2>
+          <Link to="/" className="text-orange-600 hover:text-orange-800 transition-colors">
+            Return to Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Heart className="text-orange-600" size={28} />
+              <h1 className="text-2xl font-bold text-gray-800">Divine Verses</h1>
+            </div>
+            <div className="flex space-x-6">
+              <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
+              <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
+              <Link to="/youtube" className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
+                <Youtube size={16} />
+                <span>Videos</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* Collection Header */}
+      <section className="py-12 px-6">
+        <div className="container mx-auto max-w-4xl">
+          <Link to="/" className="inline-flex items-center text-orange-600 hover:text-orange-800 transition-colors mb-8">
+            <ArrowLeft size={20} className="mr-2" />
+            Back to Home
+          </Link>
+
+          <div className="text-center mb-12">
+            <img 
+              src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=300&fit=crop" 
+              alt="Pine trees representing spiritual growth" 
+              className="w-full h-48 object-cover rounded-lg shadow-lg mb-6"
+            />
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <BookOpen className="text-orange-600" size={28} />
+              <h2 className="text-3xl font-bold text-gray-800">{collection.title}</h2>
+            </div>
+            <p className="text-xl text-gray-600">{collection.description}</p>
+          </div>
+
+          {/* Poems */}
+          <div className="space-y-12">
+            {collection.poems.map((poem, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center border-b border-gray-200 pb-4">
+                  {poem.title}
+                </h3>
+                <div className="prose prose-lg max-w-none">
+                  <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
+                    {poem.content}
+                  </pre>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 px-6 mt-12">
+        <div className="container mx-auto text-center">
+          <div className="flex justify-center items-center space-x-2 mb-4">
+            <Heart className="text-orange-400" size={20} />
+            <p className="text-gray-300">Om Sai Ram</p>
+            <Heart className="text-orange-400" size={20} />
+          </div>
+          <p className="text-gray-400">© 2024 Divine Verses. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Collection;
