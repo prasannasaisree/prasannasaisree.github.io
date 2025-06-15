@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // GitHub Pages deployment configuration
-  base: mode === 'production' ? '/prasanna-saisree-poetry/' : '/',
+  base: mode === 'production' ? '/prasannasaisree.github.io/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
