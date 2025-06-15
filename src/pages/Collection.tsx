@@ -1,4 +1,3 @@
-
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
@@ -119,6 +118,51 @@ const Collection = () => {
 നിന്റെ സ്നേഹത്തിൽ ഞാൻ മുങ്ങുന്നു`
         },
         {
+          id: "divine-compassion-malayalam",
+          title: "ദിവ്യ കരുണ (Divine Compassion)",
+          type: "text",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "divine-compassion-english",
+            title: "Divine Compassion (English Video)"
+          },
+          content: `സായിയുടെ കരുണാമയമായ കണ്ണുകൾ
+എന്റെ ആത്മാവിനെ സ്പർശിക്കുന്നു
+പാപങ്ങളുടെ ഭാരം അകന്നുപോകുന്നു
+ശുദ്ധതയുടെ പ്രകാശം വരുന്നു
+
+ക്ഷമയുടെ സമുദ്രം നീയാണ്
+സ്നേഹത്തിന്റെ മഴ നീയാണ്
+എന്റെ ഗുരുവേ, എന്റെ രക്ഷകയേ
+നിന്റെ കരുണയിൽ ഞാൻ കുളിക്കുന്നു`
+        },
+        {
+          id: "inner-peace-malayalam",
+          title: "അന്തഃശാന്തി (Inner Peace) - Video Poem",
+          type: "video",
+          description: "A serene Malayalam poem about finding inner peace through Sai Baba's grace",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This contemplative video poem explores the journey to inner tranquility through Malayalam verses.",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "inner-peace-english",
+            title: "Inner Peace (English)"
+          }
+        },
+        {
+          id: "eternal-bliss-malayalam",
+          title: "നിത്യാനന്ദം (Eternal Bliss) - Video Poem",
+          type: "video",
+          description: "A joyful Malayalam devotional song celebrating eternal divine bliss",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This uplifting video poem captures the essence of divine joy and eternal happiness.",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "eternal-bliss-english",
+            title: "Eternal Bliss (English Video)"
+          }
+        },
+        {
           id: "sais-glory",
           title: "സായി മഹിമ (Sai's Glory) - Video Poem",
           type: "video",
@@ -193,6 +237,56 @@ When storms of life come rushing in,
 Your embrace keeps me so warm,
 Divine Mother, through thick and thin,
 You shelter me from every storm.`
+        },
+        {
+          id: "divine-compassion-english",
+          title: "Divine Compassion - Video Poem",
+          type: "video",
+          description: "An inspiring English video poem about Sai Baba's infinite compassion",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This heartfelt video poem explores the depths of divine mercy and love through spoken English verses.",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "divine-compassion-malayalam",
+            title: "ദിവ്യ കരുണ (Malayalam)"
+          }
+        },
+        {
+          id: "inner-peace-english",
+          title: "Inner Peace",
+          type: "text",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "inner-peace-malayalam",
+            title: "അന്തഃശാന്തി (Malayalam Video)"
+          },
+          content: `In the stillness of my heart,
+Where worldly noise cannot reach,
+Sai's presence sets apart,
+The peace that none can breach.
+
+Gentle whispers in the soul,
+Calm the storms of restless mind,
+Making broken spirits whole,
+Leaving earthly cares behind.
+
+In this sacred quiet space,
+Divine love begins to grow,
+Wrapped in Sai's eternal grace,
+Perfect peace I come to know.`
+        },
+        {
+          id: "eternal-bliss-english",
+          title: "Eternal Bliss - Video Poem",
+          type: "video",
+          description: "A celebratory English video poem about the joy of divine connection",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This joyous video poem celebrates the eternal happiness found in divine love and devotion.",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "eternal-bliss-malayalam",
+            title: "നിത്യാനന്ദം (Malayalam Video)"
+          }
         },
         {
           id: "love-and-light",

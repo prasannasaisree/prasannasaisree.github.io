@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { BookOpen, Youtube } from "lucide-react";
@@ -45,6 +44,9 @@ const Index = () => {
         { title: "Divine Light", id: "divine-light" },
         { title: "Sacred Path", id: "sacred-path" },
         { title: "Mother's Love (Malayalam)", id: "mothers-love-malayalam" },
+        { title: "Divine Compassion", id: "divine-compassion-malayalam" },
+        { title: "Inner Peace (Video)", id: "inner-peace-malayalam" },
+        { title: "Eternal Bliss (Video)", id: "eternal-bliss-malayalam" },
         { title: "Sai's Glory (Video)", id: "sais-glory" }
       ]
     },
@@ -56,6 +58,9 @@ const Index = () => {
         { title: "Eternal Grace", id: "eternal-grace" },
         { title: "Journey Within", id: "journey-within" },
         { title: "Mother's Love", id: "mothers-love-english" },
+        { title: "Divine Compassion (Video)", id: "divine-compassion-english" },
+        { title: "Inner Peace", id: "inner-peace-english" },
+        { title: "Eternal Bliss (Video)", id: "eternal-bliss-english" },
         { title: "Love and Light (Video)", id: "love-and-light" }
       ]
     }
@@ -64,12 +69,12 @@ const Index = () => {
   const recentPoems = [
     { title: "അമ്മയുടെ സ്നേഹം (Mother's Love)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "mothers-love-malayalam" },
     { title: "Mother's Love", language: "English", collection: "english-reflections", type: "text", id: "mothers-love-english" },
-    { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "divine-light" },
-    { title: "Eternal Grace", language: "English", collection: "english-reflections", type: "text", id: "eternal-grace" },
-    { title: "സായി മഹിമ (Sai's Glory)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "sais-glory" },
-    { title: "Love and Light", language: "English", collection: "english-reflections", type: "video", id: "love-and-light" },
-    { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "sacred-path" },
-    { title: "Journey Within", language: "English", collection: "english-reflections", type: "text", id: "journey-within" }
+    { title: "ദിവ്യ കരുണ (Divine Compassion)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "divine-compassion-malayalam" },
+    { title: "Divine Compassion", language: "English", collection: "english-reflections", type: "video", id: "divine-compassion-english" },
+    { title: "അന്തഃശാന്തി (Inner Peace)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "inner-peace-malayalam" },
+    { title: "Inner Peace", language: "English", collection: "english-reflections", type: "text", id: "inner-peace-english" },
+    { title: "നിത്യാനന്ദം (Eternal Bliss)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "eternal-bliss-malayalam" },
+    { title: "Eternal Bliss", language: "English", collection: "english-reflections", type: "video", id: "eternal-bliss-english" }
   ];
 
   // Handle link clicks to save scroll position

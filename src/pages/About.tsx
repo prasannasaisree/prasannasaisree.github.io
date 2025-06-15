@@ -33,8 +33,8 @@ const About = () => {
           <div className="text-center mb-12">
             <div className="flex justify-center mb-8">
               <img 
-                src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=300&h=300&fit=crop" 
-                alt="Sathya Sai Baba - Spiritual Guide and Inspiration" 
+                src="https://images.unsplash.com/photo-1494790108755-2616c88a5e20?w=300&h=300&fit=crop" 
+                alt="Prasanna Saisree - Spiritual Poet and Devotee" 
                 className="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-orange-200"
               />
             </div>
