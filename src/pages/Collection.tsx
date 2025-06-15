@@ -1,4 +1,3 @@
-
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
@@ -174,6 +173,7 @@ const Collection = () => {
     "malayalam-devotion": {
       title: "മലയാളം ഭക്തി കവിതകൾ (Malayalam Devotional Poems)",
       description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
+      headerImage: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=300&fit=crop",
       poems: [
         {
           id: "divine-light",
@@ -325,6 +325,7 @@ const Collection = () => {
     "english-reflections": {
       title: "English Spiritual Reflections",
       description: "Contemplative verses on divine love and spiritual awakening",
+      headerImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=300&fit=crop",
       poems: [
         {
           id: "eternal-grace",
@@ -501,6 +502,7 @@ No more need I ever roam.`
     "prayers-chants": {
       title: "Prayers & Sacred Chants",
       description: "Traditional prayers and chants for daily spiritual practice",
+      headerImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=300&fit=crop",
       poems: [
         {
           id: "morning-prayer",
@@ -605,6 +607,7 @@ The joy that true devotion brings.`
     "wisdom-teachings": {
       title: "Wisdom & Teachings",
       description: "Poetic reflections on Sai Baba's timeless teachings and life lessons",
+      headerImage: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=300&fit=crop",
       poems: [
         {
           id: "path-of-truth",
@@ -723,6 +726,7 @@ Brings peace that heaven has sent.`
     "festival-celebrations": {
       title: "Festival & Celebration Poems",
       description: "Joyous verses for religious festivals and special occasions",
+      headerImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=300&fit=crop",
       poems: [
         {
           id: "guru-purnima",
@@ -866,8 +870,7 @@ To go to any faithful length.`
       <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <SaiBabaIcon size={28} className="text-orange-600" />
+            <div className="flex items-center">
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
@@ -892,8 +895,8 @@ To go to any faithful length.`
 
           <div className="text-center mb-12">
             <img 
-              src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=300&fit=crop" 
-              alt="Pine trees representing spiritual growth" 
+              src={collection.headerImage} 
+              alt={`Header image for ${collection.title}`} 
               className="w-full h-48 object-cover rounded-lg shadow-lg mb-6"
             />
             <div className="flex items-center justify-center space-x-2 mb-4">
