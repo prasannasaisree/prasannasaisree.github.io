@@ -1,3 +1,4 @@
+
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
@@ -912,10 +913,14 @@ To go to any faithful length.`
                     <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 mb-6">
                       {poem.title}
                     </h3>
-                    <div className="prose prose-lg max-w-none mb-8">
+                    <div className="prose prose-lg max-w-none mb-6">
                       <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
                         {poem.content}
                       </pre>
+                    </div>
+                    {/* Author Attribution */}
+                    <div className="text-center mb-8">
+                      <p className="text-gray-500 italic text-sm">— Prasanna Saisree</p>
                     </div>
                     {/* Translation and Share Links at Bottom */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-4 pt-6 border-t border-gray-100">
@@ -947,7 +952,9 @@ To go to any faithful length.`
                       </div>
                     </div>
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold text-gray-800 mb-4">{poem.title}</h3>
+                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{poem.title}</h3>
+                      {/* Author Attribution for Video */}
+                      <p className="text-gray-500 italic text-sm mb-4">by Prasanna Saisree</p>
                       <div className="flex items-center space-x-2 mb-4">
                         <div className="flex items-center space-x-1 text-red-600 bg-red-50 px-3 py-2 rounded-lg border border-red-200">
                           <Youtube size={16} />
