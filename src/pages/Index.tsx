@@ -8,21 +8,23 @@ const Index = () => {
       id: "malayalam-devotion",
       title: "മലയാളം ഭക്തി കവിതകൾ (Malayalam Devotional Poems)",
       description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
-      poems: ["Divine Light", "Sacred Path"]
+      poems: ["Divine Light", "Sacred Path", "Sai's Glory (Video)"]
     },
     {
       id: "english-reflections",
       title: "English Spiritual Reflections",
       description: "Contemplative verses on divine love and spiritual awakening",
-      poems: ["Eternal Grace", "Journey Within"]
+      poems: ["Eternal Grace", "Journey Within", "Love and Light (Video)"]
     }
   ];
 
   const recentPoems = [
-    { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion" },
-    { title: "Eternal Grace", language: "English", collection: "english-reflections" },
-    { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion" },
-    { title: "Journey Within", language: "English", collection: "english-reflections" }
+    { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion", type: "text" },
+    { title: "Eternal Grace", language: "English", collection: "english-reflections", type: "text" },
+    { title: "സായി മഹിമ (Sai's Glory)", language: "Malayalam", collection: "malayalam-devotion", type: "video" },
+    { title: "Love and Light", language: "English", collection: "english-reflections", type: "video" },
+    { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion", type: "text" },
+    { title: "Journey Within", language: "English", collection: "english-reflections", type: "text" }
   ];
 
   return (
@@ -90,9 +92,11 @@ const Index = () => {
                       <Link 
                         key={index}
                         to={`/collection/${collection.id}`}
-                        className="block text-orange-600 hover:text-orange-800 transition-colors"
+                        className="block text-orange-600 hover:text-orange-800 transition-colors flex items-center space-x-1"
                       >
-                        • {poem}
+                        <span>•</span>
+                        <span>{poem}</span>
+                        {poem.includes("Video") && <Youtube size={14} className="text-red-600" />}
                       </Link>
                     ))}
                   </div>
@@ -113,7 +117,7 @@ const Index = () => {
       <section className="py-12 px-6 bg-white/50">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">Recent Poems</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPoems.map((poem, index) => (
               <Link 
                 key={index}
@@ -123,9 +127,17 @@ const Index = () => {
                 <h4 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">
                   {poem.title}
                 </h4>
-                <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                  {poem.language}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                    {poem.language}
+                  </span>
+                  {poem.type === "video" && (
+                    <div className="flex items-center space-x-1 text-red-600">
+                      <Youtube size={14} />
+                      <span className="text-xs">Video</span>
+                    </div>
+                  )}
+                </div>
               </Link>
             ))}
           </div>

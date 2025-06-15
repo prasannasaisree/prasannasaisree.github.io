@@ -1,6 +1,6 @@
 
 import { useParams, Link } from "react-router-dom";
-import { Heart, Youtube, ArrowLeft, BookOpen } from "lucide-react";
+import { Heart, Youtube, ArrowLeft, BookOpen, Play } from "lucide-react";
 
 const Collection = () => {
   const { id } = useParams();
@@ -12,6 +12,7 @@ const Collection = () => {
       poems: [
         {
           title: "ദിവ്യ ജ്യോതി (Divine Light)",
+          type: "text",
           content: `സായി ബാബായുടെ ദിവ്യ കിരണങ്ങൾ
 എന്റെ ഹൃദയത്തിൽ പ്രകാശിക്കുന്നു
 ഇരുട്ടിന്റെ മേഘങ്ങൾ അകന്നുപോകുന്നു
@@ -24,6 +25,7 @@ const Collection = () => {
         },
         {
           title: "പവിത്ര മാർഗ്ഗം (Sacred Path)",
+          type: "text",
           content: `സത്യത്തിന്റെ പാതയിൽ നടക്കുമ്പോൾ
 സായിയുടെ കാരുണ്യം കാവലാകുന്നു
 അഹിംസയുടെ പൂക്കൾ വിരിയുന്നു
@@ -33,6 +35,13 @@ const Collection = () => {
 ശാന്തിയുടെ നദി ഒഴുകുന്നു
 സേവയിലൂടെ, ഭക്തിയിലൂടെ
 ദൈവത്തോട് അടുക്കുന്നു`
+        },
+        {
+          title: "സായി മഹിമ (Sai's Glory) - Video Poem",
+          type: "video",
+          description: "A melodious rendition of a Malayalam devotional poem praising Sai Baba's divine attributes",
+          embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
+          videoDescription: "This video poem captures the essence of Sai Baba's teachings through beautiful Malayalam verses accompanied by traditional devotional music."
         }
       ]
     },
@@ -42,6 +51,7 @@ const Collection = () => {
       poems: [
         {
           title: "Eternal Grace",
+          type: "text",
           content: `In the silence of the morning prayer,
 Your grace descends like gentle rain,
 Washing away all worldly care,
@@ -59,6 +69,7 @@ Love will bloom in every day.`
         },
         {
           title: "Journey Within",
+          type: "text",
           content: `Beyond the veil of mind and thought,
 Lies the treasure that we seek,
 Not in worldly things we've bought,
@@ -73,6 +84,13 @@ Service to others, love for all,
 Compassion flowing like a stream,
 Answer to the inner call,
 Living the divine dream.`
+        },
+        {
+          title: "Love and Light - Video Poem",
+          type: "video",
+          description: "An inspiring English poem about spiritual transformation through Sai Baba's teachings",
+          embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
+          videoDescription: "This spoken word video poem explores themes of inner transformation and divine love, set against peaceful nature imagery."
         }
       ]
     }
@@ -139,15 +157,54 @@ Living the divine dream.`
           {/* Poems */}
           <div className="space-y-12">
             {collection.poems.map((poem, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center border-b border-gray-200 pb-4">
-                  {poem.title}
-                </h3>
-                <div className="prose prose-lg max-w-none">
-                  <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
-                    {poem.content}
-                  </pre>
-                </div>
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                {poem.type === "text" ? (
+                  // Text Poem
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center border-b border-gray-200 pb-4">
+                      {poem.title}
+                    </h3>
+                    <div className="prose prose-lg max-w-none">
+                      <pre className="whitespace-pre-wrap font-serif text-gray-700 leading-relaxed text-center">
+                        {poem.content}
+                      </pre>
+                    </div>
+                  </div>
+                ) : (
+                  // Video Poem
+                  <>
+                    <div className="aspect-video bg-gray-200 flex items-center justify-center relative">
+                      {/* Placeholder for YouTube embed */}
+                      <div className="text-center">
+                        <Play className="text-gray-400 mb-2 mx-auto" size={48} />
+                        <p className="text-gray-500">YouTube Video Placeholder</p>
+                        <p className="text-sm text-gray-400">Video ID: {poem.embedId}</p>
+                      </div>
+                      {/* Uncomment below to use actual YouTube embeds */}
+                      {/* 
+                      <iframe
+                        src={`https://www.youtube.com/embed/${poem.embedId}`}
+                        title={poem.title}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                      */}
+                    </div>
+                    <div className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-gray-800">{poem.title}</h3>
+                        <div className="flex items-center space-x-1 text-red-600">
+                          <Youtube size={20} />
+                          <span className="text-sm">Video</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 mb-4">{poem.description}</p>
+                      <p className="text-sm text-gray-500 italic">{poem.videoDescription}</p>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
