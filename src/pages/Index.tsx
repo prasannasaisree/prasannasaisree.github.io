@@ -8,23 +8,31 @@ const Index = () => {
       id: "malayalam-devotion",
       title: "മലയാളം ഭക്തി കവിതകൾ (Malayalam Devotional Poems)",
       description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
-      poems: ["Divine Light", "Sacred Path", "Sai's Glory (Video)"]
+      poems: [
+        { title: "Divine Light", id: "divine-light" },
+        { title: "Sacred Path", id: "sacred-path" },
+        { title: "Sai's Glory (Video)", id: "sais-glory" }
+      ]
     },
     {
       id: "english-reflections",
       title: "English Spiritual Reflections",
       description: "Contemplative verses on divine love and spiritual awakening",
-      poems: ["Eternal Grace", "Journey Within", "Love and Light (Video)"]
+      poems: [
+        { title: "Eternal Grace", id: "eternal-grace" },
+        { title: "Journey Within", id: "journey-within" },
+        { title: "Love and Light (Video)", id: "love-and-light" }
+      ]
     }
   ];
 
   const recentPoems = [
-    { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion", type: "text" },
-    { title: "Eternal Grace", language: "English", collection: "english-reflections", type: "text" },
-    { title: "സായി മഹിമ (Sai's Glory)", language: "Malayalam", collection: "malayalam-devotion", type: "video" },
-    { title: "Love and Light", language: "English", collection: "english-reflections", type: "video" },
-    { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion", type: "text" },
-    { title: "Journey Within", language: "English", collection: "english-reflections", type: "text" }
+    { title: "ദിവ്യ ജ്യോതി (Divine Light)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "divine-light" },
+    { title: "Eternal Grace", language: "English", collection: "english-reflections", type: "text", id: "eternal-grace" },
+    { title: "സായി മഹിമ (Sai's Glory)", language: "Malayalam", collection: "malayalam-devotion", type: "video", id: "sais-glory" },
+    { title: "Love and Light", language: "English", collection: "english-reflections", type: "video", id: "love-and-light" },
+    { title: "പവിത്ര മാർഗ്ഗം (Sacred Path)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "sacred-path" },
+    { title: "Journey Within", language: "English", collection: "english-reflections", type: "text", id: "journey-within" }
   ];
 
   return (
@@ -91,12 +99,12 @@ const Index = () => {
                     {collection.poems.map((poem, index) => (
                       <Link 
                         key={index}
-                        to={`/collection/${collection.id}`}
+                        to={`/collection/${collection.id}#${poem.id}`}
                         className="block text-orange-600 hover:text-orange-800 transition-colors flex items-center space-x-1"
                       >
                         <span>•</span>
-                        <span>{poem}</span>
-                        {poem.includes("Video") && <Youtube size={14} className="text-red-600" />}
+                        <span>{poem.title}</span>
+                        {poem.title.includes("Video") && <Youtube size={14} className="text-red-600" />}
                       </Link>
                     ))}
                   </div>
@@ -121,7 +129,7 @@ const Index = () => {
             {recentPoems.map((poem, index) => (
               <Link 
                 key={index}
-                to={`/collection/${poem.collection}`}
+                to={`/collection/${poem.collection}#${poem.id}`}
                 className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group"
               >
                 <h4 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">

@@ -1,8 +1,22 @@
+
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Heart, Youtube, ArrowLeft, BookOpen, Play } from "lucide-react";
 
 const Collection = () => {
   const { id } = useParams();
+
+  useEffect(() => {
+    // Scroll to the specific poem if there's a hash in the URL
+    if (window.location.hash) {
+      const element = document.getElementById(window.location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
 
   const collections = {
     "malayalam-devotion": {
@@ -10,6 +24,7 @@ const Collection = () => {
       description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
       poems: [
         {
+          id: "divine-light",
           title: "ദിവ്യ ജ്യോതി (Divine Light)",
           type: "text",
           content: `സായി ബാബായുടെ ദിവ്യ കിരണങ്ങൾ
@@ -23,6 +38,7 @@ const Collection = () => {
 എന്റെ ജീവിതയാത്രയിൽ വെളിച്ചമാകട്ടെ`
         },
         {
+          id: "sacred-path",
           title: "പവിത്ര മാർഗ്ഗം (Sacred Path)",
           type: "text",
           content: `സത്യത്തിന്റെ പാതയിൽ നടക്കുമ്പോൾ
@@ -36,10 +52,11 @@ const Collection = () => {
 ദൈവത്തോട് അടുക്കുന്നു`
         },
         {
+          id: "sais-glory",
           title: "സായി മഹിമ (Sai's Glory) - Video Poem",
           type: "video",
           description: "A melodious rendition of a Malayalam devotional poem praising Sai Baba's divine attributes",
-          embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
+          embedId: "dQw4w9WgXcQ",
           videoDescription: "This video poem captures the essence of Sai Baba's teachings through beautiful Malayalam verses accompanied by traditional devotional music."
         }
       ]
@@ -49,6 +66,7 @@ const Collection = () => {
       description: "Contemplative verses on divine love and spiritual awakening",
       poems: [
         {
+          id: "eternal-grace",
           title: "Eternal Grace",
           type: "text",
           content: `In the silence of the morning prayer,
@@ -67,6 +85,7 @@ In your presence, I am sure,
 Love will bloom in every day.`
         },
         {
+          id: "journey-within",
           title: "Journey Within",
           type: "text",
           content: `Beyond the veil of mind and thought,
@@ -85,10 +104,11 @@ Answer to the inner call,
 Living the divine dream.`
         },
         {
+          id: "love-and-light",
           title: "Love and Light - Video Poem",
           type: "video",
           description: "An inspiring English poem about spiritual transformation through Sai Baba's teachings",
-          embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
+          embedId: "dQw4w9WgXcQ",
           videoDescription: "This spoken word video poem explores themes of inner transformation and divine love, set against peaceful nature imagery."
         }
       ]
@@ -156,7 +176,7 @@ Living the divine dream.`
           {/* Poems */}
           <div className="space-y-12">
             {collection.poems.map((poem, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div key={index} id={poem.id} className="bg-white rounded-lg shadow-lg overflow-hidden scroll-mt-20">
                 {poem.type === "text" ? (
                   // Text Poem
                   <div className="p-8">
@@ -179,17 +199,6 @@ Living the divine dream.`
                         <p className="text-gray-500">YouTube Video Placeholder</p>
                         <p className="text-sm text-gray-400">Video ID: {poem.embedId}</p>
                       </div>
-                      {/* Uncomment below to use actual YouTube embeds */}
-                      {/* 
-                      <iframe
-                        src={`https://www.youtube.com/embed/${poem.embedId}`}
-                        title={poem.title}
-                        className="w-full h-full"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                      */}
                     </div>
                     <div className="p-8">
                       <div className="flex items-start justify-between mb-4">
