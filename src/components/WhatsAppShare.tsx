@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
+import { Share2 } from 'lucide-react';
 
 interface WhatsAppShareProps {
   poemTitle: string;
@@ -27,11 +27,11 @@ const WhatsAppShare: React.FC<WhatsAppShareProps> = ({
   return (
     <button
       onClick={handleWhatsAppShare}
-      className={`inline-flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors ${className}`}
+      className={`inline-flex items-center space-x-1 text-green-600 hover:text-green-700 bg-green-50 hover:bg-green-100 px-3 py-2 rounded-lg transition-colors border border-green-200 hover:border-green-300 ${className}`}
       title="Share on WhatsApp"
     >
-      <MessageCircle size={16} />
-      <span>Share</span>
+      <Share2 size={16} />
+      <span className="text-sm font-medium">Share</span>
     </button>
   );
 };

@@ -30,34 +30,138 @@ const Collection = () => {
         const poem = collection.poems.find(p => p.id === poemId);
         if (poem) {
           // Update page title
-          document.title = `${poem.title} - ${collection.title}`;
+          document.title = `${poem.title} - ${collection.title} | Prasanna Saisree`;
           
-          // Update meta description
+          // Update or create meta description
           let metaDescription = document.querySelector('meta[name="description"]');
-          if (metaDescription) {
-            metaDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem by Prasanna Saisree inspired by Sathya Sai Baba's teachings`);
+          if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.setAttribute('name', 'description');
+            document.head.appendChild(metaDescription);
           }
+          metaDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem by Prasanna Saisree inspired by Sathya Sai Baba's teachings. Experience divine love through poetry.`);
           
-          // Update Open Graph tags
+          // Update or create Open Graph title
           let ogTitle = document.querySelector('meta[property="og:title"]');
-          if (ogTitle) {
-            ogTitle.setAttribute('content', `${poem.title} - Prasanna Saisree`);
+          if (!ogTitle) {
+            ogTitle = document.createElement('meta');
+            ogTitle.setAttribute('property', 'og:title');
+            document.head.appendChild(ogTitle);
           }
+          ogTitle.setAttribute('content', `${poem.title} - Prasanna Saisree`);
           
+          // Update or create Open Graph description
           let ogDescription = document.querySelector('meta[property="og:description"]');
-          if (ogDescription) {
-            ogDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem inspired by Sathya Sai Baba's teachings`);
+          if (!ogDescription) {
+            ogDescription = document.createElement('meta');
+            ogDescription.setAttribute('property', 'og:description');
+            document.head.appendChild(ogDescription);
+          }
+          ogDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem inspired by Sathya Sai Baba's teachings. Experience divine love and wisdom through devotional poetry.`);
+          
+          // Update or create Open Graph URL
+          let ogUrl = document.querySelector('meta[property="og:url"]');
+          if (!ogUrl) {
+            ogUrl = document.createElement('meta');
+            ogUrl.setAttribute('property', 'og:url');
+            document.head.appendChild(ogUrl);
+          }
+          ogUrl.setAttribute('content', `${window.location.origin}/collection/${id}#${poemId}`);
+          
+          // Update or create Open Graph type
+          let ogType = document.querySelector('meta[property="og:type"]');
+          if (!ogType) {
+            ogType = document.createElement('meta');
+            ogType.setAttribute('property', 'og:type');
+            document.head.appendChild(ogType);
+          }
+          ogType.setAttribute('content', 'article');
+          
+          // Use different images based on poem type and language
+          let imageUrl;
+          if (poem.type === 'video') {
+            imageUrl = 'https://images.unsplash.com/photo-1494790108755-2616c88a5e20?w=1200&h=630&fit=crop&overlay=dark&text=Video%20Poem';
+          } else if (id === 'malayalam-devotion') {
+            imageUrl = 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&h=630&fit=crop';
+          } else {
+            imageUrl = 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1200&h=630&fit=crop';
           }
           
-          // Use different images based on language/collection
-          const imageUrl = id === 'malayalam-devotion' 
-            ? 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&h=630&fit=crop'
-            : 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1200&h=630&fit=crop';
-          
+          // Update or create Open Graph image
           let ogImage = document.querySelector('meta[property="og:image"]');
-          if (ogImage) {
-            ogImage.setAttribute('content', imageUrl);
+          if (!ogImage) {
+            ogImage = document.createElement('meta');
+            ogImage.setAttribute('property', 'og:image');
+            document.head.appendChild(ogImage);
           }
+          ogImage.setAttribute('content', imageUrl);
+          
+          // Update or create Open Graph image width
+          let ogImageWidth = document.querySelector('meta[property="og:image:width"]');
+          if (!ogImageWidth) {
+            ogImageWidth = document.createElement('meta');
+            ogImageWidth.setAttribute('property', 'og:image:width');
+            document.head.appendChild(ogImageWidth);
+          }
+          ogImageWidth.setAttribute('content', '1200');
+          
+          // Update or create Open Graph image height
+          let ogImageHeight = document.querySelector('meta[property="og:image:height"]');
+          if (!ogImageHeight) {
+            ogImageHeight = document.createElement('meta');
+            ogImageHeight.setAttribute('property', 'og:image:height');
+            document.head.appendChild(ogImageHeight);
+          }
+          ogImageHeight.setAttribute('content', '630');
+          
+          // Update or create Twitter Card type
+          let twitterCard = document.querySelector('meta[name="twitter:card"]');
+          if (!twitterCard) {
+            twitterCard = document.createElement('meta');
+            twitterCard.setAttribute('name', 'twitter:card');
+            document.head.appendChild(twitterCard);
+          }
+          twitterCard.setAttribute('content', 'summary_large_image');
+          
+          // Update or create Twitter title
+          let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+          if (!twitterTitle) {
+            twitterTitle = document.createElement('meta');
+            twitterTitle.setAttribute('name', 'twitter:title');
+            document.head.appendChild(twitterTitle);
+          }
+          twitterTitle.setAttribute('content', `${poem.title} - Prasanna Saisree`);
+          
+          // Update or create Twitter description
+          let twitterDescription = document.querySelector('meta[name="twitter:description"]');
+          if (!twitterDescription) {
+            twitterDescription = document.createElement('meta');
+            twitterDescription.setAttribute('name', 'twitter:description');
+            document.head.appendChild(twitterDescription);
+          }
+          twitterDescription.setAttribute('content', `Read "${poem.title}" - a spiritual poem inspired by Sathya Sai Baba's teachings.`);
+          
+          // Update or create Twitter image
+          let twitterImage = document.querySelector('meta[name="twitter:image"]');
+          if (!twitterImage) {
+            twitterImage = document.createElement('meta');
+            twitterImage.setAttribute('name', 'twitter:image');
+            document.head.appendChild(twitterImage);
+          }
+          twitterImage.setAttribute('content', imageUrl);
+        }
+      } else {
+        // Default collection metadata when no specific poem is selected
+        if (collection) {
+          document.title = `${collection.title} | Prasanna Saisree`;
+          
+          let metaDescription = document.querySelector('meta[name="description"]');
+          if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.setAttribute('name', 'description');
+            document.head.appendChild(metaDescription);
+          }
+          metaDescription.setAttribute('content', collection.description);
         }
       }
     };
@@ -169,6 +273,51 @@ const Collection = () => {
           description: "A melodious rendition of a Malayalam devotional poem praising Sai Baba's divine attributes",
           embedId: "dQw4w9WgXcQ",
           videoDescription: "This video poem captures the essence of Sai Baba's teachings through beautiful Malayalam verses accompanied by traditional devotional music."
+        },
+        {
+          id: "surrender-malayalam",
+          title: "സമർപ്പണം (Surrender)",
+          type: "text",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "surrender-english",
+            title: "Surrender (English Video)"
+          },
+          content: `സായിയുടെ കാൽക്കൽ ഞാൻ സമർപ്പിക്കുന്നു
+എന്റെ ഹൃദയവും മനസ്സും
+എല്ലാ ആഗ്രഹങ്ങളും വിസർജ്ജിക്കുന്നു
+നിന്റെ ഇഷ്ടത്തിന് അധീനമായി
+
+അഹങ്കാരത്തിന്റെ ചങ്ങലകൾ പൊട്ടിച്ച്
+വിനയത്തിന്റെ പാത തിരഞ്ഞെടുക്കുന്നു
+സായി ബാബാ, എന്റെ നാഥാ
+നിന്റെ സേവകനായി മാറ്റണമേ`
+        },
+        {
+          id: "devotion-malayalam",
+          title: "ഭക്തി (Devotion) - Video Poem",
+          type: "video",
+          description: "A heartfelt Malayalam video expressing pure devotion to Sai Baba",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This emotional video poem captures the essence of true devotion and love for the divine.",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "devotion-english",
+            title: "Devotion (English)"
+          }
+        },
+        {
+          id: "unity-malayalam",
+          title: "ഐക്യം (Unity) - Video Poem",
+          type: "video",
+          description: "A powerful Malayalam video about oneness and unity in divine love",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This inspiring video poem explores the theme of unity and oneness through Sai Baba's teachings.",
+          translationLink: {
+            collection: "english-reflections",
+            poemId: "unity-english",
+            title: "Unity (English Video)"
+          }
         }
       ]
     },
@@ -295,6 +444,56 @@ Perfect peace I come to know.`
           description: "An inspiring English poem about spiritual transformation through Sai Baba's teachings",
           embedId: "dQw4w9WgXcQ",
           videoDescription: "This spoken word video poem explores themes of inner transformation and divine love, set against peaceful nature imagery."
+        },
+        {
+          id: "surrender-english",
+          title: "Surrender - Video Poem",
+          type: "video",
+          description: "A moving English video about letting go and surrendering to divine will",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This profound video poem explores the spiritual journey of surrender and trust in divine guidance.",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "surrender-malayalam",
+            title: "സമർപ്പണം (Malayalam)"
+          }
+        },
+        {
+          id: "devotion-english",
+          title: "Devotion",
+          type: "text",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "devotion-malayalam",
+            title: "ഭക്തി (Malayalam Video)"
+          },
+          content: `In the temple of my heart,
+Sacred flames of love burn bright,
+Devotion sets me apart,
+From darkness into light.
+
+Every prayer, every breath,
+Offered at your holy feet,
+Life or death, joy or death,
+In your presence, all complete.
+
+Sai Baba, my beloved guide,
+In devotion I find home,
+With you forever by my side,
+No more need I ever roam.`
+        },
+        {
+          id: "unity-english",
+          title: "Unity - Video Poem",
+          type: "video",
+          description: "An uplifting English video about the oneness of all creation",
+          embedId: "dQw4w9WgXcQ",
+          videoDescription: "This beautiful video poem celebrates the unity of all beings in divine love and consciousness.",
+          translationLink: {
+            collection: "malayalam-devotion",
+            poemId: "unity-malayalam",
+            title: "ഐക്യം (Malayalam Video)"
+          }
         }
       ]
     }
@@ -365,15 +564,15 @@ Perfect peace I come to know.`
                 {poem.type === "text" ? (
                   // Text Poem
                   <div className="p-8">
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                       <h3 className="text-2xl font-bold text-gray-800 text-center border-b border-gray-200 pb-4 flex-1">
                         {poem.title}
                       </h3>
-                      <div className="ml-4 flex items-center space-x-2">
+                      <div className="flex items-center justify-center sm:justify-end space-x-3">
                         {poem.translationLink && (
                           <Link 
                             to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
-                            className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg"
+                            className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg border border-orange-200"
                           >
                             <Languages size={16} />
                             <span className="text-sm">{poem.translationLink.title}</span>
@@ -404,11 +603,20 @@ Perfect peace I come to know.`
                       </div>
                     </div>
                     <div className="p-8">
-                      <div className="flex items-start justify-between mb-4">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-4">
                         <h3 className="text-2xl font-bold text-gray-800">{poem.title}</h3>
-                        <div className="flex items-center space-x-2">
-                          <div className="flex items-center space-x-1 text-red-600">
-                            <Youtube size={20} />
+                        <div className="flex items-center justify-center sm:justify-end space-x-3">
+                          {poem.translationLink && (
+                            <Link 
+                              to={`/collection/${poem.translationLink.collection}#${poem.translationLink.poemId}`}
+                              className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 transition-colors bg-orange-50 hover:bg-orange-100 px-3 py-2 rounded-lg border border-orange-200"
+                            >
+                              <Languages size={16} />
+                              <span className="text-sm">{poem.translationLink.title}</span>
+                            </Link>
+                          )}
+                          <div className="flex items-center space-x-1 text-red-600 bg-red-50 px-3 py-2 rounded-lg border border-red-200">
+                            <Youtube size={16} />
                             <span className="text-sm">Video</span>
                           </div>
                           <WhatsAppShare 
