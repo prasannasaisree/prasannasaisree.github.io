@@ -1,4 +1,5 @@
 
+
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { BookOpen, Youtube } from "lucide-react";
@@ -83,6 +84,12 @@ const Index = () => {
     sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
   };
 
+  // Handle collection button click to scroll to top
+  const handleCollectionClick = () => {
+    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
       {/* Header */}
@@ -160,7 +167,7 @@ const Index = () => {
                   </div>
                   <Link 
                     to={`/collection/${collection.id}`}
-                    onClick={handlePoemClick}
+                    onClick={handleCollectionClick}
                     className="inline-block mt-4 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
                   >
                     View Collection
@@ -220,3 +227,4 @@ const Index = () => {
 };
 
 export default Index;
+
