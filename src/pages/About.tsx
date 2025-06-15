@@ -1,8 +1,45 @@
+
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Youtube, Mail, BookOpen } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const About = () => {
+  // Save and restore scroll position
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      sessionStorage.setItem('aboutScrollPosition', window.scrollY.toString());
+    };
+
+    const handleScroll = () => {
+      sessionStorage.setItem('aboutScrollPosition', window.scrollY.toString());
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    // Restore scroll position when coming to about page
+    const savedPosition = sessionStorage.getItem('aboutScrollPosition');
+    if (savedPosition) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: parseInt(savedPosition),
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeunload', saveScrollPosition);
+    };
+  }, []);
+
+  // Handle navigation clicks to save current scroll position
+  const handleNavClick = () => {
+    sessionStorage.setItem('aboutScrollPosition', window.scrollY.toString());
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
       {/* Header */}
@@ -13,9 +50,9 @@ const About = () => {
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
-              <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
-              <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
-              <Link to="/youtube" className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
+              <Link to="/" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
+              <Link to="/about" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
+              <Link to="/youtube" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
                 <Youtube size={16} />
                 <span>Videos</span>
               </Link>
@@ -69,6 +106,7 @@ const About = () => {
                 </p>
                 <Link 
                   to="/collection/malayalam-devotion"
+                  onClick={handleNavClick}
                   className="text-orange-600 hover:text-orange-800 transition-colors font-medium"
                 >
                   View Collection →
@@ -84,6 +122,7 @@ const About = () => {
                 </p>
                 <Link 
                   to="/collection/english-reflections"
+                  onClick={handleNavClick}
                   className="text-orange-600 hover:text-orange-800 transition-colors font-medium"
                 >
                   View Collection →

@@ -1,9 +1,45 @@
 
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Youtube, Play, ArrowLeft } from "lucide-react";
 import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const YouTubePage = () => {
+  // Save and restore scroll position
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
+    };
+
+    const handleScroll = () => {
+      sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    // Restore scroll position when coming to youtube page
+    const savedPosition = sessionStorage.getItem('youtubeScrollPosition');
+    if (savedPosition) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: parseInt(savedPosition),
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeunload', saveScrollPosition);
+    };
+  }, []);
+
+  // Handle navigation clicks to save current scroll position
+  const handleNavClick = () => {
+    sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
+  };
+
   const videos = [
     {
       id: "1",
@@ -38,9 +74,9 @@ const YouTubePage = () => {
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
-              <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
-              <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
-              <Link to="/youtube" className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
+              <Link to="/" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
+              <Link to="/about" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
+              <Link to="/youtube" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
                 <Youtube size={16} />
                 <span>Videos</span>
               </Link>
@@ -52,7 +88,7 @@ const YouTubePage = () => {
       {/* YouTube Section */}
       <section className="py-12 px-6">
         <div className="container mx-auto max-w-6xl">
-          <Link to="/" className="inline-flex items-center text-orange-600 hover:text-orange-800 transition-colors mb-8">
+          <Link to="/" onClick={handleNavClick} className="inline-flex items-center text-orange-600 hover:text-orange-800 transition-colors mb-8">
             <ArrowLeft size={20} className="mr-2" />
             Back to Home
           </Link>

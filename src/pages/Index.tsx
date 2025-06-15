@@ -127,6 +127,11 @@ const Index = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Handle navigation clicks to save current scroll position
+  const handleNavClick = () => {
+    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
       {/* Header */}
@@ -137,9 +142,9 @@ const Index = () => {
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
-              <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
-              <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
-              <Link to="/youtube" className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
+              <Link to="/" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
+              <Link to="/about" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
+              <Link to="/youtube" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
                 <Youtube size={16} />
                 <span>Videos</span>
               </Link>
