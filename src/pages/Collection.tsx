@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { Heart, Youtube, ArrowLeft, BookOpen, Play } from "lucide-react";
 
@@ -119,7 +118,7 @@ Living the divine dream.`
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Heart className="text-orange-600" size={28} />
-              <h1 className="text-2xl font-bold text-gray-800">Divine Verses</h1>
+              <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
               <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
@@ -219,7 +218,7 @@ Living the divine dream.`
             <p className="text-gray-300">Om Sai Ram</p>
             <Heart className="text-orange-400" size={20} />
           </div>
-          <p className="text-gray-400">© 2024 Divine Verses. All rights reserved.</p>
+          <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>
       </footer>
     </div>

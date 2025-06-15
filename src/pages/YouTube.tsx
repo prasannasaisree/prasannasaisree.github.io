@@ -35,7 +35,7 @@ const YouTubePage = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Heart className="text-orange-600" size={28} />
-              <h1 className="text-2xl font-bold text-gray-800">Divine Verses</h1>
+              <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
               <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
@@ -116,7 +116,7 @@ const YouTubePage = () => {
               Join our YouTube community for regular uploads of devotional songs, poetry recitations, and spiritual discussions.
             </p>
             <a 
-              href="https://youtube.com/@priyasaidevotional" 
+              href="https://youtube.com/@prasannasaisreedevotional" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
@@ -136,7 +136,7 @@ const YouTubePage = () => {
             <p className="text-gray-300">Om Sai Ram</p>
             <Heart className="text-orange-400" size={20} />
           </div>
-          <p className="text-gray-400">© 2024 Divine Verses. All rights reserved.</p>
+          <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>
       </footer>
     </div>
