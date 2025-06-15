@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Heart, Youtube, Play, ArrowLeft } from "lucide-react";
+import { Sun, Youtube, Play, ArrowLeft } from "lucide-react";
 
 const YouTubePage = () => {
   const videos = [
@@ -34,7 +34,7 @@ const YouTubePage = () => {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Heart className="text-orange-600" size={28} />
+              <Sun className="text-orange-600" size={28} />
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
@@ -132,9 +132,9 @@ const YouTubePage = () => {
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="container mx-auto text-center">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Heart className="text-orange-400" size={20} />
+            <Sun className="text-orange-400" size={20} />
             <p className="text-gray-300">Om Sai Ram</p>
-            <Heart className="text-orange-400" size={20} />
+            <Sun className="text-orange-400" size={20} />
           </div>
           <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>
