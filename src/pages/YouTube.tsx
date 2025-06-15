@@ -1,89 +1,22 @@
 
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { Youtube, Play, ArrowLeft } from "lucide-react";
-import SaiBabaIcon from "../components/SaiBabaIcon";
+import { Youtube, ArrowLeft } from "lucide-react";
+import { videos } from "../data/videos";
+import { useScrollPosition } from "../hooks/useScrollPosition";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import VideoCard from "../components/VideoCard";
 
 const YouTubePage = () => {
-  // Save and restore scroll position
-  useEffect(() => {
-    const saveScrollPosition = () => {
-      sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
-    };
+  const { saveCurrentPosition } = useScrollPosition('youtubeScrollPosition');
 
-    const handleScroll = () => {
-      sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('beforeunload', saveScrollPosition);
-
-    // Restore scroll position when coming to youtube page
-    const savedPosition = sessionStorage.getItem('youtubeScrollPosition');
-    if (savedPosition) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: parseInt(savedPosition),
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('beforeunload', saveScrollPosition);
-    };
-  }, []);
-
-  // Handle navigation clicks to save current scroll position
   const handleNavClick = () => {
-    sessionStorage.setItem('youtubeScrollPosition', window.scrollY.toString());
+    saveCurrentPosition();
   };
-
-  const videos = [
-    {
-      id: "1",
-      title: "Divine Light - Malayalam Devotional Song",
-      description: "A heartfelt rendition of the poem 'Divine Light' set to music",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
-      language: "Malayalam"
-    },
-    {
-      id: "2",
-      title: "Eternal Grace - English Spiritual Song",
-      description: "An English devotional song expressing gratitude for divine grace",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
-      language: "English"
-    },
-    {
-      id: "3",
-      title: "Morning Prayers with Sai",
-      description: "A peaceful morning prayer session with devotional songs",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
-      language: "Mixed"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
-            </div>
-            <div className="flex space-x-6">
-              <Link to="/" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
-              <Link to="/about" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
-              <Link to="/youtube" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
-                <Youtube size={16} />
-                <span>Videos</span>
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header onNavClick={handleNavClick} />
 
       {/* YouTube Section */}
       <section className="py-12 px-6">
@@ -111,36 +44,7 @@ const YouTubePage = () => {
           {/* Video Grid */}
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
             {videos.map((video) => (
-              <div key={video.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="aspect-video bg-gray-200 flex items-center justify-center relative">
-                  {/* Placeholder for YouTube embed */}
-                  <div className="text-center">
-                    <Play className="text-gray-400 mb-2 mx-auto" size={48} />
-                    <p className="text-gray-500">YouTube Video Placeholder</p>
-                    <p className="text-sm text-gray-400">Video ID: {video.embedId}</p>
-                  </div>
-                  {/* Uncomment below to use actual YouTube embeds */}
-                  {/* 
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.embedId}`}
-                    title={video.title}
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                  */}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-gray-800">{video.title}</h3>
-                    <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                      {video.language}
-                    </span>
-                  </div>
-                  <p className="text-gray-600">{video.description}</p>
-                </div>
-              </div>
+              <VideoCard key={video.id} video={video} />
             ))}
           </div>
 
@@ -164,17 +68,7 @@ const YouTubePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 px-6">
-        <div className="container mx-auto text-center">
-          <div className="flex justify-center items-center space-x-2 mb-4">
-            <SaiBabaIcon size={20} className="text-orange-400" />
-            <p className="text-gray-300">Om Sai Ram</p>
-            <SaiBabaIcon size={20} className="text-orange-400" />
-          </div>
-          <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

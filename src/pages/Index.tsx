@@ -1,157 +1,32 @@
+
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { BookOpen, Youtube } from "lucide-react";
-import SaiBabaIcon from "../components/SaiBabaIcon";
+import { poemCollections } from "../data/collections";
+import { recentPoems } from "../data/recentPoems";
+import { useScrollPosition } from "../hooks/useScrollPosition";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CollectionCard from "../components/CollectionCard";
+import RecentPoemCard from "../components/RecentPoemCard";
 
 const Index = () => {
-  // Save scroll position before navigating away
-  useEffect(() => {
-    const saveScrollPosition = () => {
-      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
-    };
+  const { saveCurrentPosition } = useScrollPosition('homeScrollPosition');
 
-    // Save scroll position when user scrolls
-    const handleScroll = () => {
-      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('beforeunload', saveScrollPosition);
-
-    // Restore scroll position when coming back to home page
-    const savedPosition = sessionStorage.getItem('homeScrollPosition');
-    if (savedPosition) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: parseInt(savedPosition),
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('beforeunload', saveScrollPosition);
-    };
-  }, []);
-
-  const collections = [
-    {
-      id: "malayalam-devotion",
-      title: "മലയാളം ഭക്തി കവിതകൾ (Malayalam Devotional Poems)",
-      description: "Spiritual poems in Malayalam expressing devotion to Sathya Sai Baba",
-      poems: [
-        { title: "Divine Light", id: "divine-light" },
-        { title: "Sacred Path", id: "sacred-path" },
-        { title: "Mother's Love (Malayalam)", id: "mothers-love-malayalam" },
-        { title: "Divine Compassion", id: "divine-compassion-malayalam" },
-        { title: "Inner Peace (Video)", id: "inner-peace-malayalam" },
-        { title: "Eternal Bliss (Video)", id: "eternal-bliss-malayalam" },
-        { title: "Sai's Glory (Video)", id: "sais-glory" }
-      ]
-    },
-    {
-      id: "english-reflections",
-      title: "English Spiritual Reflections",
-      description: "Contemplative verses on divine love and spiritual awakening",
-      poems: [
-        { title: "Eternal Grace", id: "eternal-grace" },
-        { title: "Journey Within", id: "journey-within" },
-        { title: "Mother's Love", id: "mothers-love-english" },
-        { title: "Divine Compassion (Video)", id: "divine-compassion-english" },
-        { title: "Inner Peace", id: "inner-peace-english" },
-        { title: "Eternal Bliss (Video)", id: "eternal-bliss-english" },
-        { title: "Love and Light (Video)", id: "love-and-light" }
-      ]
-    },
-    {
-      id: "prayers-chants",
-      title: "Prayers & Sacred Chants",
-      description: "Traditional prayers and chants for daily spiritual practice",
-      poems: [
-        { title: "Morning Prayer", id: "morning-prayer" },
-        { title: "Evening Devotion", id: "evening-devotion" },
-        { title: "Gayatri Mantra (Video)", id: "gayatri-mantra" },
-        { title: "Sai Ashtakam", id: "sai-ashtakam" },
-        { title: "Om Sai Ram Chant (Video)", id: "om-sai-ram-chant" },
-        { title: "Divine Names", id: "divine-names" }
-      ]
-    },
-    {
-      id: "wisdom-teachings",
-      title: "Wisdom & Teachings",
-      description: "Poetic reflections on Sai Baba's timeless teachings and life lessons",
-      poems: [
-        { title: "The Path of Truth", id: "path-of-truth" },
-        { title: "Service & Love", id: "service-love" },
-        { title: "Unity in Diversity (Video)", id: "unity-diversity" },
-        { title: "Forgiveness", id: "forgiveness" },
-        { title: "Selfless Action", id: "selfless-action" },
-        { title: "Divine Purpose (Video)", id: "divine-purpose" }
-      ]
-    },
-    {
-      id: "festival-celebrations",
-      title: "Festival & Celebration Poems",
-      description: "Joyous verses for religious festivals and special occasions",
-      poems: [
-        { title: "Guru Purnima", id: "guru-purnima" },
-        { title: "Diwali Lights (Video)", id: "diwali-lights" },
-        { title: "Christmas Love", id: "christmas-love" },
-        { title: "New Year Blessings", id: "new-year-blessings" },
-        { title: "Mahashivaratri (Video)", id: "mahashivaratri" },
-        { title: "Celebration of Unity", id: "celebration-unity" }
-      ]
-    }
-  ];
-
-  const recentPoems = [
-    { title: "അമ്മയുടെ സ്നേഹം (Mother's Love)", language: "Malayalam", collection: "malayalam-devotion", type: "text", id: "mothers-love-malayalam" },
-    { title: "Mother's Love", language: "English", collection: "english-reflections", type: "text", id: "mothers-love-english" },
-    { title: "Morning Prayer", language: "English", collection: "prayers-chants", type: "text", id: "morning-prayer" },
-    { title: "The Path of Truth", language: "English", collection: "wisdom-teachings", type: "text", id: "path-of-truth" },
-    { title: "Guru Purnima", language: "English", collection: "festival-celebrations", type: "text", id: "guru-purnima" },
-    { title: "Divine Compassion", language: "English", collection: "english-reflections", type: "video", id: "divine-compassion-english" },
-    { title: "Gayatri Mantra", language: "Sanskrit", collection: "prayers-chants", type: "video", id: "gayatri-mantra" },
-    { title: "Unity in Diversity", language: "English", collection: "wisdom-teachings", type: "video", id: "unity-diversity" }
-  ];
-
-  // Handle link clicks to save scroll position
   const handlePoemClick = () => {
-    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    saveCurrentPosition();
   };
 
-  // Handle collection button click to scroll to top
   const handleCollectionClick = () => {
-    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    saveCurrentPosition();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Handle navigation clicks to save current scroll position
   const handleNavClick = () => {
-    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    saveCurrentPosition();
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
-            </div>
-            <div className="flex space-x-6">
-              <Link to="/" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
-              <Link to="/about" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors">About</Link>
-              <Link to="/youtube" onClick={handleNavClick} className="text-gray-700 hover:text-orange-600 transition-colors flex items-center space-x-1">
-                <Youtube size={16} />
-                <span>Videos</span>
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header onNavClick={handleNavClick} />
 
       {/* Hero Section */}
       <section className="relative py-16 px-6">
@@ -185,37 +60,13 @@ const Index = () => {
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">Poetry Collections</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {collections.map((collection) => (
-              <div key={collection.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <BookOpen className="text-orange-600" size={24} />
-                    <h4 className="text-xl font-semibold text-gray-800">{collection.title}</h4>
-                  </div>
-                  <p className="text-gray-600 mb-4">{collection.description}</p>
-                  <div className="space-y-2">
-                    {collection.poems.map((poem, index) => (
-                      <Link 
-                        key={index}
-                        to={`/collection/${collection.id}#${poem.id}`}
-                        onClick={handlePoemClick}
-                        className="block text-orange-600 hover:text-orange-800 transition-colors flex items-center space-x-1"
-                      >
-                        <span>•</span>
-                        <span>{poem.title}</span>
-                        {poem.title.includes("Video") && <Youtube size={14} className="text-red-600" />}
-                      </Link>
-                    ))}
-                  </div>
-                  <Link 
-                    to={`/collection/${collection.id}`}
-                    onClick={handleCollectionClick}
-                    className="inline-block mt-4 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
-                  >
-                    View Collection
-                  </Link>
-                </div>
-              </div>
+            {poemCollections.map((collection) => (
+              <CollectionCard
+                key={collection.id}
+                collection={collection}
+                onPoemClick={handlePoemClick}
+                onCollectionClick={handleCollectionClick}
+              />
             ))}
           </div>
         </div>
@@ -227,43 +78,17 @@ const Index = () => {
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">Recent Poems</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPoems.map((poem, index) => (
-              <Link 
+              <RecentPoemCard
                 key={index}
-                to={`/collection/${poem.collection}#${poem.id}`}
-                onClick={handlePoemClick}
-                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group"
-              >
-                <h4 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">
-                  {poem.title}
-                </h4>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                    {poem.language}
-                  </span>
-                  {poem.type === "video" && (
-                    <div className="flex items-center space-x-1 text-red-600">
-                      <Youtube size={14} />
-                      <span className="text-xs">Video</span>
-                    </div>
-                  )}
-                </div>
-              </Link>
+                poem={poem}
+                onPoemClick={handlePoemClick}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 px-6">
-        <div className="container mx-auto text-center">
-          <div className="flex justify-center items-center space-x-2 mb-4">
-            <SaiBabaIcon size={20} className="text-orange-400" />
-            <p className="text-gray-300">Om Sai Ram</p>
-            <SaiBabaIcon size={20} className="text-orange-400" />
-          </div>
-          <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
