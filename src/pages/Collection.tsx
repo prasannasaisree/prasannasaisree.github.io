@@ -1,21 +1,22 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Heart, Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
 
 const Collection = () => {
   const { id } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     // Scroll to the specific poem if there's a hash in the URL
-    if (window.location.hash) {
-      const element = document.getElementById(window.location.hash.substring(1));
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
       }
     }
-  }, []);
+  }, [location.hash, location.pathname]); // React to both hash and pathname changes
 
   const collections = {
     "malayalam-devotion": {
@@ -66,7 +67,7 @@ const Collection = () => {
 
 നിന്റെ മടിയിൽ ഞാൻ കുട്ടിയാകുന്നു
 എല്ലാ ഭാരങ്ങളും മറന്നുപോകുന്നു
-അമ്മേ സായി, എന്റെ രക്షകയേ
+അമ്മേ സായി, എന്റെ രക്ഷകയേ
 നിന്റെ സ്നേഹത്തിൽ ഞാൻ മുങ്ങുന്നു`
         },
         {
