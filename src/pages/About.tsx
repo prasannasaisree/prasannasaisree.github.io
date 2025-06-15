@@ -1,6 +1,6 @@
-
 import { Link } from "react-router-dom";
-import { Sun, Youtube, Mail, BookOpen, Flower2 } from "lucide-react";
+import { Youtube, Mail, BookOpen, Flame } from "lucide-react";
+import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const About = () => {
   return (
@@ -10,7 +10,7 @@ const About = () => {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Sun className="text-orange-600" size={28} />
+              <SaiBabaIcon size={28} className="text-orange-600" />
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
@@ -39,9 +39,9 @@ const About = () => {
             </div>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">About Prasanna Saisree</h2>
             <div className="flex justify-center space-x-2 mb-6">
-              <Flower2 className="text-orange-500" size={20} />
-              <Flower2 className="text-orange-500" size={20} />
-              <Flower2 className="text-orange-500" size={20} />
+              <Flame className="text-orange-500" size={20} />
+              <Flame className="text-orange-500" size={20} />
+              <Flame className="text-orange-500" size={20} />
             </div>
           </div>
 
@@ -146,9 +146,9 @@ const About = () => {
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="container mx-auto text-center">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Sun className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
             <p className="text-gray-300">Om Sai Ram</p>
-            <Sun className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
           </div>
           <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>

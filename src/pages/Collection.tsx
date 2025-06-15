@@ -1,6 +1,8 @@
+
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Heart, Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
+import { Youtube, ArrowLeft, BookOpen, Play, Languages } from "lucide-react";
+import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const Collection = () => {
   const { id } = useParams();
@@ -180,7 +182,7 @@ You shelter me from every storm.`
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Heart className="text-orange-600" size={28} />
+              <SaiBabaIcon size={28} className="text-orange-600" />
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
@@ -277,9 +279,9 @@ You shelter me from every storm.`
       <footer className="bg-gray-800 text-white py-8 px-6 mt-12">
         <div className="container mx-auto text-center">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Heart className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
             <p className="text-gray-300">Om Sai Ram</p>
-            <Heart className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
           </div>
           <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { BookOpen, Youtube, Sun, Flower2 } from "lucide-react";
+import { BookOpen, Youtube, Flame } from "lucide-react";
+import SaiBabaIcon from "../components/SaiBabaIcon";
 
 const Index = () => {
   // Save scroll position before navigating away
@@ -82,7 +83,7 @@ const Index = () => {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Sun className="text-orange-600" size={28} />
+              <SaiBabaIcon size={28} className="text-orange-600" />
               <h1 className="text-2xl font-bold text-gray-800">Prasanna Saisree</h1>
             </div>
             <div className="flex space-x-6">
@@ -115,9 +116,9 @@ const Index = () => {
             Spiritual poetry and devotional songs inspired by the teachings of Bhagavan Sri Sathya Sai Baba
           </p>
           <div className="flex justify-center space-x-4">
-            <Flower2 className="text-orange-500" size={24} />
-            <Flower2 className="text-orange-500" size={24} />
-            <Flower2 className="text-orange-500" size={24} />
+            <Flame className="text-orange-500" size={24} />
+            <Flame className="text-orange-500" size={24} />
+            <Flame className="text-orange-500" size={24} />
           </div>
         </div>
       </section>
@@ -199,9 +200,9 @@ const Index = () => {
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="container mx-auto text-center">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Sun className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
             <p className="text-gray-300">Om Sai Ram</p>
-            <Sun className="text-orange-400" size={20} />
+            <SaiBabaIcon size={20} className="text-orange-400" />
           </div>
           <p className="text-gray-400">© 2024 Prasanna Saisree. All rights reserved.</p>
         </div>
